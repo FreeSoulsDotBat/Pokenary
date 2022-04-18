@@ -1,0 +1,547 @@
+@font-face {
+  font-family: 'Pokemon';
+  src: url("/static/fonts/PokemonSolid.ttf"); }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("/static/fonts/Roboto-Regular.ttf"); }
+
+/* line 13, static_main/pokenary/main.scss */
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  line-height: 0; }
+
+/* line 19, static_main/pokenary/main.scss */
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background-color: #2f2235;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 7fr;
+  grid-template-areas: 'header' 'content'; }
+
+@keyframes scale-up {
+  0%,
+  100% {
+    transform: scale(var(--scale-1)) rotatez(45deg); }
+  40%,
+  90% {
+    transform: scale(var(--scale-2)) rotatez(45deg); }
+  30%,
+  75% {
+    transform: scale(var(--scale-3)) rotatez(45deg); } }
+
+@keyframes scale-alternate {
+  0%,
+  100% {
+    transform: scale(1.1) rotatez(45deg); }
+  30%,
+  90% {
+    transform: scale(0.9) rotatez(45deg); }
+  45%,
+  60% {
+    transform: scale(0.96) rotatez(45deg); }
+  50%,
+  75% {
+    transform: scale(0.97) rotatez(45deg); } }
+
+@keyframes particle-up {
+  0% {
+    top: -.3rem;
+    left: -1rem; }
+  100% {
+    position: relative;
+    opacity: 0.8;
+    top: -2rem;
+    left: -0.5rem;
+    transform: scale(0.1); } }
+
+@keyframes drop-down {
+  0%,
+  100% {
+    top: var(--init-top);
+    left: var(--init-left); }
+  50% {
+    top: var(--top);
+    left: var(--left); } }
+
+@keyframes falling {
+  0% {
+    transform: translate3d(-1.5rem, -2rem, 0) rotate(0deg);
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    transform: translate3d(-3rem, 6rem, 0) rotate(90deg);
+    opacity: 0; } }
+
+@keyframes falling2 {
+  0% {
+    transform: translate3d(-3rem, -2rem, 0) rotate(90deg);
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    transform: translate3d(-4.5rem, 6rem, 0) rotate(0deg);
+    opacity: 0; } }
+
+@keyframes falling3 {
+  0% {
+    transform: translate3d(0rem, -2rem, 0) rotate(-20deg);
+    opacity: 1; }
+  50% {
+    opacity: 1; }
+  100% {
+    transform: translate3d(-1.5rem, 6rem, 0) rotate(-70deg);
+    opacity: 0.3; } }
+
+/* line 125, static_main/pokenary/base.scss */
+.base__header {
+  width: 100%;
+  height: 5rem;
+  background-color: #2f2235;
+  padding: 0.25rem 1rem;
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; }
+
+/* line 136, static_main/pokenary/base.scss */
+.base__logo {
+  font-family: 'Pokemon';
+  color: #fccf00;
+  line-height: 0;
+  -webkit-text-stroke-width: 0.08rem;
+  -webkit-text-stroke-color: #2468b1;
+  letter-spacing: 0.1rem;
+  user-select: none; }
+
+/* line 147, static_main/pokenary/base.scss */
+.base__menu ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0; }
+
+/* line 155, static_main/pokenary/base.scss */
+.base__menu li {
+  font-weight: 700;
+  margin: 0 2.5rem 0 2.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: .2rem; }
+
+/* line 165, static_main/pokenary/base.scss */
+.base__menu a#base__home-title:hover ~ div#base__fire-box {
+  visibility: visible;
+  opacity: 1;
+  transition: .3s ease-in-out;
+  transform: scale(1.4); }
+
+/* line 172, static_main/pokenary/base.scss */
+.base__menu a#base__categ-title:hover ~ div#base__water-box {
+  visibility: visible;
+  opacity: 1;
+  transition: .3s ease-in-out;
+  transform: scale(1.4); }
+
+/* line 179, static_main/pokenary/base.scss */
+.base__menu a#base__menu-fav:hover ~ div#base__leaf-box {
+  visibility: visible;
+  opacity: 1;
+  transition: .3s ease-in-out;
+  transform: scale(1.4); }
+
+/* line 186, static_main/pokenary/base.scss */
+.base__menu a#base__home-title:hover {
+  color: #d43322;
+  font-weight: 900;
+  transition: .3s ease-in-out;
+  transform: scale(1.4); }
+
+/* line 193, static_main/pokenary/base.scss */
+.base__menu a#base__categ-title:hover {
+  color: #1a89bd;
+  font-weight: 900;
+  transition: .3s ease-in-out;
+  transform: scale(1.4); }
+
+/* line 200, static_main/pokenary/base.scss */
+.base__menu a#base__fav-title:hover {
+  color: #5f881e;
+  font-weight: 900;
+  transition: .3s ease-in-out;
+  transform: scale(1.4); }
+
+/* line 207, static_main/pokenary/base.scss */
+.base__menu a {
+  text-decoration: none;
+  z-index: 7;
+  color: #71816d;
+  transform: scale(1);
+  transition: .3s ease-in-out; }
+
+/* line 217, static_main/pokenary/base.scss */
+.base__icons ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: baseline;
+  align-items: center; }
+
+/* line 224, static_main/pokenary/base.scss */
+.base__icons li {
+  margin-right: 2rem; }
+
+/* line 228, static_main/pokenary/base.scss */
+.base__icons a {
+  text-decoration: none; }
+
+/* line 232, static_main/pokenary/base.scss */
+.base__icons .base__linkedin,
+.base__icons .base__github {
+  height: 2rem;
+  cursor: pointer; }
+
+/* line 238, static_main/pokenary/base.scss */
+.base__icons .base__linkedin {
+  color: #0e76a8; }
+
+/* line 242, static_main/pokenary/base.scss */
+.base__icons .base__github {
+  color: #ffffff; }
+
+/* line 248, static_main/pokenary/base.scss */
+#base__fire-box {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+  user-select: none;
+  cursor: default; }
+
+/* line 258, static_main/pokenary/base.scss */
+.base__flames {
+  transform: rotateZ(45deg) scale(1.1);
+  position: absolute;
+  filter: drop-shadow(0 0 10px #d43322); }
+
+/* line 264, static_main/pokenary/base.scss */
+#base__flame-1 {
+  z-index: 6;
+  height: 1.7rem;
+  width: 1.7rem;
+  background: #ff7300;
+  top: -0.35rem;
+  left: -1.85rem;
+  border-radius: 0% 50% 70% 50%;
+  animation: scale-alternate 2s ease-in-out infinite; }
+
+/* line 275, static_main/pokenary/base.scss */
+#base__flame-1-red {
+  z-index: 5;
+  height: 1.875rem;
+  width: 1.875rem;
+  background: #ff1e00;
+  top: -0.56rem;
+  left: -1.94rem;
+  border-radius: 0% 50% 70% 50%;
+  animation: scale-alternate 2s ease-in-out infinite; }
+
+/* line 286, static_main/pokenary/base.scss */
+#base__flame-2 {
+  z-index: 4;
+  height: 1.25rem;
+  width: 1.25rem;
+  background: #eb620e;
+  top: -0.2rem;
+  left: -2.5rem;
+  border-radius: 0% 40% 60% 40%;
+  --scale-1: 1;
+  --scale-2: 0.96;
+  --scale-3: 0.90;
+  animation: scale-up 2s ease-in-out infinite; }
+
+/* line 301, static_main/pokenary/base.scss */
+#base__flame-2-red {
+  z-index: 3;
+  height: 1.35rem;
+  width: 1.35rem;
+  background: #ff1e00;
+  top: -0.3rem;
+  left: -2.55rem;
+  border-radius: 0% 40% 60% 40%;
+  --scale-1: 1;
+  --scale-2: 0.96;
+  --scale-3: 0.90;
+  animation: scale-up 2s ease-in-out infinite; }
+
+/* line 316, static_main/pokenary/base.scss */
+#base__flame-3 {
+  z-index: 4;
+  height: 1.25rem;
+  width: 1.25rem;
+  background: #eb620e;
+  top: -0.2rem;
+  left: -.55rem;
+  border-radius: 0% 40% 60% 40%;
+  --scale-1: 1.1;
+  --scale-2: 0.96;
+  --scale-3: 0.90;
+  animation: scale-up 3s ease-in-out infinite; }
+
+/* line 331, static_main/pokenary/base.scss */
+#base__flame-3-red {
+  z-index: 3;
+  height: 1.35rem;
+  width: 1.35rem;
+  background: #ff1e00;
+  top: -0.3rem;
+  left: -.57rem;
+  border-radius: 0% 40% 60% 40%;
+  --scale-1: 1.1;
+  --scale-2: 0.96;
+  --scale-3: 0.90;
+  animation: scale-up 3s ease-in-out infinite; }
+
+/* line 346, static_main/pokenary/base.scss */
+.base__small-element {
+  height: .5rem;
+  width: .5rem;
+  border-radius: 50%;
+  background: #ef5a00;
+  position: relative;
+  top: -.3rem;
+  left: -1rem;
+  z-index: 5; }
+
+/* line 358, static_main/pokenary/base.scss */
+#base__small-element-1 {
+  animation: particle-up 3.5s ease-in-out infinite; }
+
+/* line 362, static_main/pokenary/base.scss */
+#base__small-element-2 {
+  animation: particle-up 2.6s ease-in-out infinite; }
+
+/* line 369, static_main/pokenary/base.scss */
+#base__water-box {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1);
+  left: 1rem;
+  transition: 0.3s ease-in-out;
+  user-select: none;
+  cursor: default; }
+
+/* line 380, static_main/pokenary/base.scss */
+.base__drops {
+  position: absolute;
+  background: #29bbff;
+  transform: rotate(65deg);
+  z-index: 6; }
+
+/* line 387, static_main/pokenary/base.scss */
+#base__drop-1 {
+  width: 1.3rem;
+  height: 1.3rem;
+  top: -.7rem;
+  left: -2.8rem;
+  border-radius: 0% 50% 50% 50%;
+  box-shadow: inset -.2rem .08rem 0rem -.075rem #03a9f4;
+  --init-top: -.7rem;
+  --top: 0rem;
+  --init-left: -2.8rem;
+  --left: -3rem;
+  animation: drop-down 2s ease-in-out infinite; }
+
+/* line 402, static_main/pokenary/base.scss */
+#base__drop-2 {
+  width: .6rem;
+  height: .6rem;
+  left: -3rem;
+  top: -1.7rem;
+  border-radius: 0% 50% 50% 50%;
+  box-shadow: inset -.2rem .08rem 0rem -.12rem #03a9f4;
+  --init-top: -1.7rem;
+  --top: -.8rem;
+  --init-left: -3rem;
+  --left: -3.2rem;
+  animation: drop-down 2s ease-in-out infinite; }
+
+/* line 417, static_main/pokenary/base.scss */
+#base__drop-3 {
+  width: .9rem;
+  height: .9rem;
+  left: -1.2rem;
+  top: -1.5rem;
+  border-radius: 0% 50% 50% 50%;
+  box-shadow: inset -.2rem .08rem 0rem -.075rem #03a9f4;
+  --init-top: -1.5rem;
+  --top: -.8rem;
+  --init-left: -1.2rem;
+  --left: -1.4rem;
+  animation: drop-down 2s ease-in-out infinite; }
+
+/* line 432, static_main/pokenary/base.scss */
+#base__drop-4 {
+  width: .4rem;
+  height: .4rem;
+  left: -1.8rem;
+  top: -2rem;
+  border-radius: 0% 50% 50% 50%;
+  box-shadow: inset -.2rem .08rem 0rem -.15rem #03a9f4;
+  --init-top: -2rem;
+  --top: -1.2rem;
+  --init-left: -1.8rem;
+  --left: -2rem;
+  animation: drop-down 2s ease-in-out infinite; }
+
+/* line 447, static_main/pokenary/base.scss */
+#base__drop-5 {
+  width: .9rem;
+  height: .9rem;
+  left: -4.1rem;
+  top: -1rem;
+  border-radius: 0% 50% 50% 50%;
+  box-shadow: inset -.2rem .08rem 0rem -.075rem #03a9f4;
+  --init-top: -1rem;
+  --top: -.4rem;
+  --init-left: -4.1rem;
+  --left: -4.3rem;
+  animation: drop-down 2s ease-in-out infinite; }
+
+/* line 465, static_main/pokenary/base.scss */
+#base__leaf-box {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(1);
+  left: 1rem;
+  transition: 0.3s ease-in-out;
+  top: -6rem;
+  user-select: none;
+  cursor: default; }
+
+/* line 477, static_main/pokenary/base.scss */
+#base__leaf-box i {
+  position: absolute;
+  width: 1rem;
+  height: 1.5rem;
+  top: 0rem;
+  left: 0rem;
+  background: linear-gradient(to bottom right, #309900, #005600);
+  transform: skew(20deg);
+  border-radius: 5% 40% 70%;
+  box-shadow: inset 0px 0px 1px #222;
+  z-index: 1;
+  animation: falling 5s 0s infinite; }
+
+/* line 492, static_main/pokenary/base.scss */
+#base__leaf-box i:before {
+  position: absolute;
+  content: '';
+  top: 1rem;
+  left: .8rem;
+  height: .2rem;
+  width: .4rem;
+  transform: rotate(40deg);
+  border-radius: 0% 15% 15% 0%;
+  background: linear-gradient(to right, darkgreen, #005600);
+  z-index: 1; }
+
+/* line 505, static_main/pokenary/base.scss */
+#base__leaf-box i:after {
+  content: '';
+  height: .8rem;
+  width: .1rem;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
+  display: block;
+  transform: rotate(132deg);
+  position: absolute;
+  left: .4rem;
+  top: .25rem;
+  border-radius: 50%; }
+
+/* line 518, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(2n) {
+  animation: falling2 5s 0s infinite; }
+
+/* line 522, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(3n) {
+  animation: falling3 5s 0s infinite; }
+
+/* line 526, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(2n) {
+  height: 0.7rem;
+  width: 1rem; }
+
+/* line 531, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(2n):before {
+  width: .25rem;
+  height: .2rem;
+  top: .55rem;
+  left: .65rem;
+  transform: rotate(60deg); }
+
+/* line 539, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(2n):after {
+  width: .125rem;
+  height: .4rem;
+  left: .4rem;
+  top: .1rem; }
+
+/* line 546, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(2n) {
+  animation-delay: .2s; }
+
+/* line 550, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(3n) {
+  animation-delay: .9s; }
+
+/* line 554, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(4n) {
+  animation-delay: 1.6s; }
+
+/* line 558, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(5n) {
+  animation-delay: 2.2s; }
+
+/* line 562, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(6n) {
+  animation-delay: 3.5s; }
+
+/* line 566, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(n) {
+  background: linear-gradient(to bottom right, #309900, #005600); }
+
+/* line 570, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(2n+2) {
+  background: linear-gradient(to bottom right, #5e9900, #2b5600); }
+
+/* line 574, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(2n+2):before {
+  background: linear-gradient(to right, #3d6300, #2b5600); }
+
+/* line 578, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(4n+1) {
+  background: linear-gradient(to bottom right, #990, #564500); }
+
+/* line 582, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(4n+1):before {
+  background: linear-gradient(to right, #5e5e01, #564500); }
+
+/* line 586, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(n) {
+  transform: rotate(180deg); }
+
+/* line 590, static_main/pokenary/base.scss */
+#base__leaf-box i:nth-of-type(n) {
+  animation-timing-function: ease-out; }
