@@ -44,7 +44,7 @@ class HomeView(View):
     
 
     def get(self, request):
-        self.update_db()
+        # self.update_db()
         quantity = self.get_quantity_of_pokemons()
         pokemons = self.get_name_pokemons_per_page(quantity)
         paginator = Paginator(pokemons, 20)

@@ -82,9 +82,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pokenary',
-        'USER': 'djangoadmin',
-        'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'mysql_db',
         'PORT': '3306'
     }
 }
