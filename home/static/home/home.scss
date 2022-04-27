@@ -1,0 +1,91 @@
+@import 'pokenary/main.scss';
+
+table {
+    border: 1px solid $primary-font;
+    border-radius: 10px;
+    border-collapse: none;
+    border-spacing: 0px;
+}
+
+td {
+    border-top: 1px solid $primary-font;
+    transition-duration: 0.3s;
+}
+
+td:hover {
+    font-weight: bold;
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+    color: #fccf00;
+    border: none;
+    border-radius: 5px;
+    background-color: #2468b1;
+    box-shadow: 10px 10px 12px -5px rgba(0,0,0,0.4);
+}
+
+#container {
+    margin-top: 100px;
+    width: 100vw;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+    grid-template-rows: 100%;
+}
+
+#container__table {
+    width: 600px;
+    color: $primary-font;
+    margin: auto;
+}
+
+#container__table-head tr {
+    height: 40px;
+    font-size: 1.3rem;
+}
+
+#container__table-head th {
+    background-color: #2468b1;
+    color: #fccf00;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#container__table-body tr {
+    text-align: center;
+    height: 30px;
+}
+
+.container__images {
+    position: relative;
+    display: none;
+    animation: pokemon-appears .8s ease-in-out;
+}
+
+#container__boximage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container__who-is-this-pokemon {
+    display: block;
+    color: $primary-font;
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+@keyframes pokemon-appears {
+    0% {
+        right: -200px;
+        display: none;
+        opacity: 0;
+    }
+    1% {
+        display: block;
+    }
+    100% {
+        right: 0px;
+        opacity: 1;
+    }
+    
+}

@@ -1,0 +1,59 @@
+{% extends "pokenary/base.html" %}
+{% load compress %}
+{% load static %}
+
+{% block scsslink %}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'home/home.scss' %}" rel="stylesheet" media="screen" />
+    {% endcompress %}
+{% endblock scsslink %}
+
+{% block jslink %}
+    <script src="{% static 'home/home.js' %}"></script>
+{% endblock jslink %}
+
+{% block content %}
+<div id="container">
+    <table id="container__table">
+        <thead id="container__table-head">
+            <tr>
+                <th>
+                    Pokémons
+                </th>
+            </tr>
+        </thead>
+        <tbody id="container__table-body">
+            {% for pokemon in page_obj %}
+                <tr>
+                    <td onmouseover="setImage(event)" onmouseout="removeImage(event)" name="{{pokemon.name}}">
+                        {{ pokemon.name | title }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div id="container__boximage">
+        <p id="container__who-is-this-pokemon">??</p>
+        {% for pokemon in page_obj %}
+            <img class="container__images" id="container__image-{{pokemon.name}}" src="{{ pokemon.url }}" alt="Image of Pokémon">
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock content %}
