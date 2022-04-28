@@ -18,4 +18,4 @@ services:
     environment:
       MYSQL_DATABASE: 'pokenary'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-    container_name: mysql_db
+    container_name: 'mysql_db'

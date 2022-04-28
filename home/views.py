@@ -21,10 +21,8 @@ class HomeView(View):
             data_url = response_url.json()
             pokemons.append({'name': pokemon['name'], 
             'image_url': data_url['sprites']['other']['home']['front_default']})
-        
-        
-
-
+    
+             
 
     def get_name_pokemons_per_page(self, quantity):
         response = requests.get(
