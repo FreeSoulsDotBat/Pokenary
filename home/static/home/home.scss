@@ -1,14 +1,13 @@
 @import 'pokenary/main.scss';
 
 table {
-    border: 1px solid $primary-font;
-    border-radius: 10px;
-    border-collapse: none;
-    border-spacing: 0px;
+    border: .06rem solid $primary-font;
+    border-radius: 0.6rem;
+    border-spacing: 0rem;
 }
 
 td {
-    border-top: 1px solid $primary-font;
+    border-top: .06rem solid $primary-font;
     transition-duration: 0.3s;
 }
 
@@ -18,41 +17,39 @@ td:hover {
     transition-duration: 0.5s;
     color: #fccf00;
     border: none;
-    border-radius: 5px;
+    border-radius: .3rem;
     background-color: #2468b1;
-    box-shadow: 10px 10px 12px -5px rgba(0,0,0,0.4);
+    box-shadow: 0.06rem 0.06rem .75rem -.3rem rgba(0,0,0,0.4);
 }
 
 #container {
-    margin-top: 100px;
     width: 100vw;
-    height: fit-content;
+    min-height: 37.5rem;
     display: grid;
     grid-template-columns: 50vw 50vw;
     grid-template-rows: 100%;
 }
 
 #container__table {
-    width: 600px;
+    min-width: 37.5rem;
     color: $primary-font;
-    margin: auto;
 }
 
 #container__table-head tr {
-    height: 40px;
+    height: 2.5rem;
     font-size: 1.3rem;
 }
 
 #container__table-head th {
     background-color: #2468b1;
     color: #fccf00;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: .6rem;
+    border-top-right-radius: .6rem;
 }
 
 #container__table-body tr {
     text-align: center;
-    height: 30px;
+    height: 1.875rem;
 }
 
 .container__images {
@@ -61,7 +58,7 @@ td:hover {
     animation: pokemon-appears .8s ease-in-out;
 }
 
-#container__boximage {
+#container__image {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,9 +71,50 @@ td:hover {
     font-weight: bold;
 }
 
+.container__boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#container__pagination {
+    margin-top: 1rem;
+    height: 2rem;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+}
+
+.container__page-control {
+    color: $primary-font;
+    padding: 1rem;
+    border: .06rem solid $primary-font;
+    border-radius: .6rem;
+    margin-left: .3rem;
+    margin-right: .3rem;
+    text-decoration: none;
+    transition-duration: .3s;
+}
+
+.container__page-control:hover {
+    font-weight: bold;
+    color: #fccf00;
+    border: .06rem solid #2468b1;
+    transition-duration: .5s;
+    background-color: #2468b1;
+    box-shadow: 0.06rem 0.06rem .75rem -.3rem rgba(0,0,0,0.4);
+}
+
+#container__current {
+    color: $primary-font;
+}
+
 @keyframes pokemon-appears {
     0% {
-        right: -200px;
+        right: -12.5rem;
         display: none;
         opacity: 0;
     }
@@ -84,7 +122,7 @@ td:hover {
         display: block;
     }
     100% {
-        right: 0px;
+        right: 0rem;
         opacity: 1;
     }
     

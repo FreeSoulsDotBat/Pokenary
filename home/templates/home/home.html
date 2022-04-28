@@ -14,46 +14,50 @@
 
 {% block content %}
 <div id="container">
-    <table id="container__table">
-        <thead id="container__table-head">
-            <tr>
-                <th>
-                    Pokémons
-                </th>
-            </tr>
-        </thead>
-        <tbody id="container__table-body">
-            {% for pokemon in page_obj %}
+    <div class="container__boxes">
+        <table id="container__table">
+            <thead id="container__table-head">
                 <tr>
-                    <td onmouseover="setImage(event)" onmouseout="removeImage(event)" name="{{pokemon.name}}">
-                        {{ pokemon.name | title }}
-                    </td>
+                    <th>
+                        Pokémons
+                    </th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <div id="container__boximage">
-        <p id="container__who-is-this-pokemon">??</p>
-        {% for pokemon in page_obj %}
-            <img class="container__images" id="container__image-{{pokemon.name}}" src="{{ pokemon.url }}" alt="Image of Pokémon">
-        {% endfor %}
-    </div>
-    <div class="pagination">
-        <span class="step-links">
+            </thead>
+            <tbody id="container__table-body">
+                {% for pokemon in page_obj %}
+                    <tr>
+                        <td onmouseover="setImage(event)" onmouseout="removeImage(event)" name="{{pokemon.name}}">
+                            {{ pokemon.name | title }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div id="container__pagination">
             {% if page_obj.has_previous %}
-                <a href="?page=1">&laquo; first</a>
-                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                <a class="container__page-control" href="?page=1">Primeira</a>
             {% endif %}
-    
-            <span class="current">
-                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            {% if page_obj.has_previous %}
+                <a class="container__page-control" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+            {% endif %}
+            <span id="container__current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
             </span>
-    
             {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}">next</a>
-                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                <a class="container__page-control" href="?page={{ page_obj.next_page_number }}">Próxima</a>
             {% endif %}
-        </span>
+            {% if page_obj.has_next %}
+                <a class="container__page-control" href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="container__boxes">
+        <div id="container__image">
+            <p id="container__who-is-this-pokemon">??</p>
+            {% for pokemon in page_obj %}
+                <img class="container__images" id="container__image-{{pokemon.name}}" src="{{ pokemon.url_image }}" alt="Image of Pokémon">
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock content %}

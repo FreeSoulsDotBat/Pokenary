@@ -1,3 +1,5 @@
+from unicodedata import name
+from django.forms import model_to_dict
 from django.shortcuts import render
 from django.views import View
 from django.core.paginator import Paginator
@@ -10,28 +12,33 @@ POKEMON_URL = 'https://pokeapi.co/api/v2/pokemon'
 
 class HomeView(View):
     template_name = 'home/home.html'
+    model = Pokemon
 
     def update_db(self):
         quantity = self.get_quantity_of_pokemons()
-        response = requests.get(f'{POKEMON_URL}/?offset=0&limit={quantity}')
-        data = response.json()
-        pokemons = []
-        for pokemon in data['results']:
-            response_url = requests.get(pokemon['url'])
-            data_url = response_url.json()
-            pokemons.append({'name': pokemon['name'], 
-            'image_url': data_url['sprites']['other']['home']['front_default']})
-             
+        if len(Pokemon.objects.all()) < quantity:
+            response = requests.get(f'{POKEMON_URL}/?offset=0&limit={quantity}')
+            data = response.json()
 
-    def get_name_pokemons_per_page(self, quantity):
-        response = requests.get(
-            f'{POKEMON_URL}/?offset=0&limit={quantity}')
-        data = response.json()
-        pokemons = []
-        for result in data['results']:
-            pokemons.append({'name': result['name']})
-        
-        return pokemons
+            # for pokemon in data['results']:
+            #     if Pokemon.objects.filter(name=pokemon['name']):
+            #         continue
+            #     else:
+            #         response_image = requests.get(pokemon['url'])
+            #         data = response_image.json()
+            #         image = data['sprites']['other']['home']['front_default']
+            #         if image:
+            #             Pokemon.objects.create(name=pokemon['name'],url_image=image)
+            #         else:
+            #             if data['sprites']['other']['official-artwork']:
+            #                 image = data['sprites']['other']['official-artwork']
+                        
+
+
+            print('Updated')
+        else:
+            print('Nothing to update')
+
 
     def get_quantity_of_pokemons(self):
         response = requests.get(POKEMON_URL)
@@ -41,9 +48,8 @@ class HomeView(View):
     
 
     def get(self, request):
-        # self.update_db()
-        quantity = self.get_quantity_of_pokemons()
-        pokemons = self.get_name_pokemons_per_page(quantity)
+        self.update_db()
+        pokemons = Pokemon.objects.all()
         paginator = Paginator(pokemons, 20)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
