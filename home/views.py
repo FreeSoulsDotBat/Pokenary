@@ -1,5 +1,4 @@
 from unicodedata import name
-from django.forms import model_to_dict
 from django.shortcuts import render
 from django.views import View
 from django.core.paginator import Paginator
@@ -16,24 +15,25 @@ class HomeView(View):
 
     def update_db(self):
         quantity = self.get_quantity_of_pokemons()
-        if len(Pokemon.objects.all()) < quantity:
+        if len(Pokemon.objects.all()) < quantity and quantity > 1126:
             response = requests.get(f'{POKEMON_URL}/?offset=0&limit={quantity}')
             data = response.json()
 
-            # for pokemon in data['results']:
-            #     if Pokemon.objects.filter(name=pokemon['name']):
-            #         continue
-            #     else:
-            #         response_image = requests.get(pokemon['url'])
-            #         data = response_image.json()
-            #         image = data['sprites']['other']['home']['front_default']
-            #         if image:
-            #             Pokemon.objects.create(name=pokemon['name'],url_image=image)
-            #         else:
-            #             if data['sprites']['other']['official-artwork']:
-            #                 image = data['sprites']['other']['official-artwork']
-                        
-
+            for pokemon in data['results']:
+                if Pokemon.objects.filter(name=pokemon['name']):
+                    continue
+                else:
+                    response_image = requests.get(pokemon['url'])
+                    data = response_image.json()
+                    image = data['sprites']['other']['home']['front_default']
+                    if image:
+                        Pokemon.objects.create(name=pokemon['name'],url_image=image)
+                    else:
+                        if data['sprites']['other']['official-artwork']['front_default']:
+                            image_alt = data['sprites']['other']['official-artwork']['front_default']
+                            Pokemon.objects.create(name=pokemon['name'], url_image=image_alt)
+                        else:
+                            continue
 
             print('Updated')
         else:
@@ -49,7 +49,7 @@ class HomeView(View):
 
     def get(self, request):
         self.update_db()
-        pokemons = Pokemon.objects.all()
+        pokemons = Pokemon.objects.all().order_by('name')
         paginator = Paginator(pokemons, 20)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
