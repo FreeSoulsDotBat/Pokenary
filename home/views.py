@@ -33,5 +33,17 @@ class PokemonView(View):
     template = 'home/pokemon.html'
     
     def get(self, request, pokemon):
+        pokemon_object = Pokemon.objects.get(name=pokemon)
 
-        return render(request, self.template, {})
+        context= {
+            'name': pokemon_object.name,
+            'abilities': pokemon_object.abilities,
+            'moves': pokemon_object.moves,
+            'types': pokemon_object.types,
+            'weight': pokemon_object.weight,
+            'height': pokemon_object.height,
+            'evolutions': pokemon_object.evolutions,
+            'url_image': pokemon_object.url_image
+        }
+
+        return render(request, self.template, context)

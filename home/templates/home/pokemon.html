@@ -9,7 +9,7 @@
 {% endblock scsslink %}
 
 {% block content %}
-    <!-- <div id="container">
+    <div id="container">
         <div id="container__image-box">
             <img src="{{url_image}}" alt="{{name}}">
         </div>
@@ -17,61 +17,91 @@
             <table id="container__table">
                 <tbody>
                     <tr id="container__table-name">
-                        <td>{{ name | title }}</td>
+                        <td>
+                            <p>
+                                Name
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ name | title }}
+                            </p>
+                        </td>
                     </tr>
                     <tr id="container__table-abilities">
                         <td>
                             <p>
-                                {% for ability in abilities.names %}
-                                    {% spaceless %}
-                                        {{ ability | title | safe }}
-                                    {% endspaceless %}
-                                    {% if ability == abilities.last %}
-                                        {% spaceless %}
-                                            .
-                                        {% endspaceless %}
-                                    {% else %}
-                                        {% spaceless %}
-                                            ,
-                                        {% endspaceless %}
-                                    {% endif %}
-                                {% endfor %}
+                                Abilities
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ abilities }}
                             </p>
                         </td>
                     </tr>
                     <tr id="container__table-moves">
                         <td>
                             <p>
-                                {% for move in moves %}
-                                    {{ move | title }}
-                                {% endfor %}
+                                Moves
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ moves }}
                             </p>
                         </td>
                     </tr>
                     <tr id="container__table-types">
                         <td>
                             <p>
-                                {% for type in types %}
-                                    {{ type | title }}
-                                {% endfor %}
+                                Types
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ types }}
                             </p>
                         </td>
                     </tr>
-                    <tr id="container__table-sizes">
-                        <td>{{ weight | title }}</td>
-                        <td>{{ height | title }}</td>
+                    <tr id="container__table-weight">
+                        <td>
+                            <p>
+                                Weight
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ weight }}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr id="container__table-height">
+                        <td>
+                            <p>
+                                height
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ height }}
+                            </p>
+                        </td>
                     </tr>
                     <tr id="container__table-evolutions">
                         <td>
                             <p>
-                                {% for evolution in evolutions %}
-                                    {{ evolution | title }}
-                                {% endfor %}
+                                Evolutions
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                {{ evolutions }}
                             </p>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-    </div> -->
+    </div>
 {% endblock content %}

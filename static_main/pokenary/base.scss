@@ -352,7 +352,7 @@ body #base {
         transform: scale(1.4);
     }
 
-    a#base__categ-title:hover~div#base__water-box {
+    a#base__types-title:hover~div#base__water-box {
         visibility: visible;
         opacity: 1;
         transition: .3s ease-in-out;
@@ -373,7 +373,7 @@ body #base {
         transform: scale(1.4);
     }
 
-    a#base__categ-title:hover {
+    a#base__types-title:hover {
         color: #1a89bd;
         font-weight: 900;
         transition: .3s ease-in-out;
@@ -546,15 +546,12 @@ body #base {
     animation: particle-up 2.6s ease-in-out infinite;
 }
 
-
-
-
 #base__water-box {
     position: relative;
     visibility: hidden;
     opacity: 0;
     transform: scale(1);
-    left: 1rem;
+    left: 2rem;
     transition: 0.3s ease-in-out;
     user-select: none;
     cursor: default;
