@@ -1,0 +1,10 @@
+#container {
+    min-height: 50rem;
+    min-width: 55rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#container__spec-box {
+    display: flex;
+}

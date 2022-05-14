@@ -1,21 +1,35 @@
 version: "3"
 services:
   app:
+    container_name: pokenary_container
     build: .
     volumes:
       - .:/pokenary
     ports:
       - 8000:8000
     image: app:pokenary
-    container_name: pokenary_container
-    command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+        reservations:
+          memory: 2048M
+    command: python manage.py runserver 0.0.0.0:8000
   db:
+    container_name: 'mysql_db'
     image: mysql:latest
     volumes:
       - ./data/mysql/db:/var/lib/mysql
+    ports:
+      - 3306:3306
     environment:
       MYSQL_DATABASE: 'pokenary'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-    container_name: 'mysql_db'
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+        reservations:
+          memory: 2048M

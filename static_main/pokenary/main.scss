@@ -1,4 +1,4 @@
-$primary-font: #71816d;
+$primary-font: #fff;
 
 @font-face {
     font-family: 'Pokemon';
@@ -21,7 +21,6 @@ body {
     height: 100vh;
     padding: 0;
     margin: 0;
-    background-color: #2f2235;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 1fr 7fr;

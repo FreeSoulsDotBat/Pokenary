@@ -25,11 +25,13 @@
             </thead>
             <tbody id="container__table-body">
                 {% for pokemon in page_obj %}
-                    <tr>
-                        <td onmouseover="setImage(event)" onmouseout="removeImage(event)" name="{{pokemon.name}}">
+                <tr>
+                    <td onmouseover="setImage(event)" onmouseout="removeImage(event)" name="{{pokemon.name}}">
+                        <a onmouseover="setImage(event)" name="{{pokemon.name}}" href="{{pokemon.name}}">
                             {{ pokemon.name | title }}
-                        </td>
-                    </tr>
+                        </a>
+                    </td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
@@ -54,6 +56,7 @@
     <div class="container__boxes">
         <div id="container__image">
             <p id="container__who-is-this-pokemon">??</p>
+            <p id="container__hover-to-see">Hover a Pokémon name to see or click to full description</p>
             {% for pokemon in page_obj %}
                 <img class="container__images" id="container__image-{{pokemon.name}}" src="{{ pokemon.url_image }}" alt="Image of Pokémon">
             {% endfor %}

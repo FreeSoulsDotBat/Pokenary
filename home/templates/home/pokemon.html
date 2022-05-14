@@ -1,0 +1,77 @@
+{% extends "pokenary/base.html" %}
+{% load compress %}
+{% load static %}
+
+{% block scsslink %}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'home/pokemon.scss' %}" rel="stylesheet" media="screen" />
+    {% endcompress %}
+{% endblock scsslink %}
+
+{% block content %}
+    <!-- <div id="container">
+        <div id="container__image-box">
+            <img src="{{url_image}}" alt="{{name}}">
+        </div>
+        <div id="container__spec-box">
+            <table id="container__table">
+                <tbody>
+                    <tr id="container__table-name">
+                        <td>{{ name | title }}</td>
+                    </tr>
+                    <tr id="container__table-abilities">
+                        <td>
+                            <p>
+                                {% for ability in abilities.names %}
+                                    {% spaceless %}
+                                        {{ ability | title | safe }}
+                                    {% endspaceless %}
+                                    {% if ability == abilities.last %}
+                                        {% spaceless %}
+                                            .
+                                        {% endspaceless %}
+                                    {% else %}
+                                        {% spaceless %}
+                                            ,
+                                        {% endspaceless %}
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr id="container__table-moves">
+                        <td>
+                            <p>
+                                {% for move in moves %}
+                                    {{ move | title }}
+                                {% endfor %}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr id="container__table-types">
+                        <td>
+                            <p>
+                                {% for type in types %}
+                                    {{ type | title }}
+                                {% endfor %}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr id="container__table-sizes">
+                        <td>{{ weight | title }}</td>
+                        <td>{{ height | title }}</td>
+                    </tr>
+                    <tr id="container__table-evolutions">
+                        <td>
+                            <p>
+                                {% for evolution in evolutions %}
+                                    {{ evolution | title }}
+                                {% endfor %}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div> -->
+{% endblock content %}
