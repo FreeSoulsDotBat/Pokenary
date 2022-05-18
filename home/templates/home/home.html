@@ -4,12 +4,12 @@
 
 {% block scsslink %}
     {% compress css %}
-        <link type="text/x-scss" href="{% static 'home/home.scss' %}" rel="stylesheet" media="screen" />
+        <link type="text/x-scss" href="{% static 'home/home/style.scss' %}" rel="stylesheet" media="screen" />
     {% endcompress %}
 {% endblock scsslink %}
 
 {% block jslink %}
-    <script src="{% static 'home/home.js' %}"></script>
+    <script src="{% static 'home/home/index.js' %}"></script>
 {% endblock jslink %}
 
 {% block content %}
@@ -18,7 +18,7 @@
         <table id="container__table">
             <thead id="container__table-head">
                 <tr>
-                    <th>
+                    <th colspan="2">
                         Pokémons
                     </th>
                 </tr>
@@ -27,7 +27,7 @@
                 {% for pokemon in page_obj %}
                 <tr>
                     <td onmouseover="setImage(event)" onmouseout="removeImage(event)" name="{{pokemon.name}}">
-                        <a onmouseover="setImage(event)" name="{{pokemon.name}}" href="{{pokemon.name}}">
+                        <a onmouseover="setImage(event)" name="{{pokemon.name}}" href="/{{pokemon.name}}">
                             {{ pokemon.name | title }}
                         </a>
                     </td>
@@ -37,19 +37,19 @@
         </table>
         <div id="container__pagination">
             {% if page_obj.has_previous %}
-                <a class="container__page-control" href="?page=1">Primeira</a>
+                <a class="container__page-control" href="?page=1">First</a>
             {% endif %}
             {% if page_obj.has_previous %}
-                <a class="container__page-control" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                <a class="container__page-control" href="?page={{ page_obj.previous_page_number }}">Previous</a>
             {% endif %}
             <span id="container__current">
-                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
             </span>
             {% if page_obj.has_next %}
-                <a class="container__page-control" href="?page={{ page_obj.next_page_number }}">Próxima</a>
+                <a class="container__page-control" href="?page={{ page_obj.next_page_number }}">Next</a>
             {% endif %}
             {% if page_obj.has_next %}
-                <a class="container__page-control" href="?page={{ page_obj.paginator.num_pages }}">Última</a>
+                <a class="container__page-control" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
             {% endif %}
         </div>
     </div>

@@ -1,0 +1,10 @@
+@import 'pokenary/main.scss';
+
+#container {
+    min-height: 50rem;
+    min-width: 55rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}

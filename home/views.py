@@ -3,6 +3,7 @@ from sre_parse import SPECIAL_CHARS
 from unicodedata import name
 from django.http import HttpRequest, HttpResponseRedirect
 from django.shortcuts import render
+from django.template import Template
 from django.views import View
 from django.core.paginator import Paginator
 from .models import Pokemon
@@ -34,6 +35,7 @@ class PokemonView(View):
     
     def get(self, request, pokemon):
         pokemon_object = Pokemon.objects.get(name=pokemon)
+        evolutions_list = pokemon_object.evolutions.replace(" ", "").replace(".", "").lower().split(",")
 
         context= {
             'name': pokemon_object.name,
@@ -43,7 +45,15 @@ class PokemonView(View):
             'weight': pokemon_object.weight,
             'height': pokemon_object.height,
             'evolutions': pokemon_object.evolutions,
-            'url_image': pokemon_object.url_image
+            'url_image': pokemon_object.url_image,
+            'evolutions_list': evolutions_list
         }
 
         return render(request, self.template, context)
+    
+
+class TypesView(View):
+    template = 'home/types.html'
+
+    def get(self, request):
+        return render(request, self.template,)

@@ -1,0 +1,87 @@
+@import 'pokenary/main.scss';
+
+#container {
+    min-height: 50rem;
+    min-width: 55rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 3rem;
+}
+
+p {
+    color: $primary-font;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0rem;
+    overflow: hidden;
+    border: .06rem solid $primary-font;
+    border-radius: 0.6rem;
+}
+
+tr:not(:last-child) td{
+    border-bottom: .06rem solid $primary-font;
+}
+
+tr td:first-child {
+    border-right: .06rem solid $primary-font;
+    font-weight: bold;
+    text-align: center;
+}
+
+tr td {
+    padding: 0.5rem;
+}
+
+tr td p {
+    margin: 0;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    line-height: normal;
+    text-align: justify;
+    padding: 0.5rem;
+}
+
+tr#container__table-evolutions a {
+    text-decoration: none;
+    color: #fccf00;
+    font-weight: bold;
+}
+
+tr#container__table-evolutions a:hover {
+    color: #2468b1;
+}
+
+tr#container__table-name th {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: .06rem solid $primary-font;
+    padding: 1.5rem;
+    background-color: #2468b1;
+}
+
+th p {
+    color: #fccf00;
+}
+
+#container__spec-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+#container__image-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#container__table {
+    min-height: 37.5rem;
+    max-width: 37.5rem;
+}

@@ -4,7 +4,7 @@
 
 {% block scsslink %}
     {% compress css %}
-        <link type="text/x-scss" href="{% static 'home/pokemon.scss' %}" rel="stylesheet" media="screen" />
+        <link type="text/x-scss" href="{% static 'home/pokemon/style.scss' %}" rel="stylesheet" media="screen" />
     {% endcompress %}
 {% endblock scsslink %}
 
@@ -15,19 +15,16 @@
         </div>
         <div id="container__spec-box">
             <table id="container__table">
-                <tbody>
+                <thead>
                     <tr id="container__table-name">
-                        <td>
-                            <p>
-                                Name
-                            </p>
-                        </td>
-                        <td>
+                        <th colspan="2">
                             <p>
                                 {{ name | title }}
                             </p>
-                        </td>
+                        </th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr id="container__table-abilities">
                         <td>
                             <p>
@@ -96,7 +93,17 @@
                         </td>
                         <td>
                             <p>
-                                {{ evolutions }}
+                                {% if evolutions %}
+                                    {% for evolution in evolutions_list %}
+                                        {% if forloop.last %}
+                                            <a href="/{{evolution}}">{{ evolution | title}}</a>.
+                                        {% else %}
+                                            <a href="/{{evolution}}">{{ evolution | title}}</a>,&nbsp;
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    There are no evolutions for this Pokémon...
+                                {% endif %}
                             </p>
                         </td>
                     </tr>
