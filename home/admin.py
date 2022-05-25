@@ -1,10 +1,7 @@
-from calendar import c
-from statistics import quantiles
-import string
-from unicodedata import name
 from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.contrib.auth.models import Group, User
+from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.http import HttpResponseRedirect
 from django.urls import path
 import requests
@@ -17,6 +14,14 @@ SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species/'
 class PokemonAdmin(admin.ModelAdmin):
     change_list_template = 'admin/new_change_list.html'
     list_display = ("name", "url_image", "evolutions")
+
+
+class MyUserAdmin(UserAdmin):
+    list_display = ['username', 'is_active', 'is_staff', 'is_superuser']
+    list_filter = ['groups']
+
+class MyGroupAdmin(GroupAdmin):
+    list_display = ['name']
 
 
 class MyAdminSite(AdminSite):
@@ -205,5 +210,5 @@ class MyAdminSite(AdminSite):
 
 admin_site = MyAdminSite(name='admin')
 admin_site.register(Pokemon, PokemonAdmin)
-admin_site.register(Group)
-admin_site.register(User)
+admin_site.register(Group, MyGroupAdmin)
+admin_site.register(User, MyUserAdmin)

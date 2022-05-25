@@ -109,6 +109,15 @@
                     </tr>
                 </tbody>
             </table>
+            {% if user.is_authenticated %}
+            <form action="{% url 'home:favorites' %}" method="post">
+                {% csrf_token %}
+
+                <input type="hidden" name="user" value="{{ user.username }}">
+                <input type="hidden" name="pokemon" value="{{ name }}">
+                <input id="container__turn-favorite" type="submit" value="Favorite">
+            </form>
+            {% endif %}
         </div>
     </div>
 {% endblock content %}

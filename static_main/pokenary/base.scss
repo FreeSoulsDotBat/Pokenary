@@ -320,10 +320,12 @@ body #base {
     font-family: 'Pokemon';
     color: #fccf00;
     line-height: 0;
+    font-size: 2rem;
     -webkit-text-stroke-width: 0.08rem;
     -webkit-text-stroke-color: #2468b1;
     letter-spacing: 0.1rem;
     user-select: none;
+    text-decoration: none;
 }
 
 .base__menu {
@@ -416,6 +418,12 @@ body #base {
     .base__github {
         height: 2rem;
         cursor: pointer;
+    }
+
+    .base__login {
+        color: #fccf00;
+        text-decoration: none;
+        font-weight: bold;
     }
 
     .base__linkedin {

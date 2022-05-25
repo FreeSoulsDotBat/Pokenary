@@ -41,7 +41,7 @@
     </div>
     <div id="base">
         <header class="base__header">
-            <h1 class="base__logo">Pokenary</h1>
+            <a class="base__logo" href="{% url 'home:home' %}">Pokenary</a>
             <nav class="base__menu">
                 <ul>
                     <li id="base__menu-home">
@@ -68,7 +68,7 @@
                         </div>
                     </li>
                     <li id="base__menu-fav">
-                        <a id="base__fav-title">Favorites</a>
+                        <a id="base__fav-title" href="{% url 'home:favorites' %}">Favorites</a>
                         <div id="base__leaf-box">
                             <i></i>
                             <i></i>
@@ -83,6 +83,18 @@
             </nav>
             <nav class="base__icons">
                 <ul>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <p class="base__login" >Welcome: {{ user.get_username }}</p>
+                        </li>
+                        <li>
+                            <a class="base__login" href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="base__login" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
                     <li>
                         <a target="_blank" href="https://www.linkedin.com/in/jonatan-bossan/">
                             <i class="fa-brands fa-linkedin base__linkedin"></i>

@@ -1,0 +1,34 @@
+{% extends "pokenary/base.html" %}
+{% load compress %}
+{% load static %}
+
+{% block scsslink %}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'home/favorites/style.scss' %}" rel="stylesheet" media="screen" />
+    {% endcompress %}
+{% endblock scsslink %}
+
+{% block content %}
+    <div id="container">
+        {% for entry in data %}
+            <table class="container__favorite-box">
+                <thead>
+                    <tr>
+                        <th>Pokémon</th>
+                        <th>Stars</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img class="container__favorite-image" src="{{entry.pokemon.url_image}}" alt="{{entry.pokemon.name}}">
+                        </td>
+                        <td>
+                            {{entry.pokemon.stars}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+{% endblock content %}

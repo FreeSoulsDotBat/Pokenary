@@ -1,0 +1,19 @@
+{% extends "pokenary/base.html" %}
+{% load compress %}
+{% load static %}
+
+{% block scsslink %}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'home/signup/style.scss' %}" rel="stylesheet" media="screen" />
+    {% endcompress %}
+{% endblock scsslink %}
+
+{% block content %}
+    <div id="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <input type="submit" value="Signup">
+        </form>
+    </div>
+{% endblock content %}
