@@ -25,7 +25,9 @@
                 <tbody>
                     <tr>
                         <td>
-                            <img class="container__favorite-image" src="{{entry.pokemon.url_image}}" alt="{{entry.pokemon.name}}">
+                            <a href="/{{ entry.pokemon.name }}">
+                                <img class="container__favorite-image" src="{{entry.pokemon.url_image}}" alt="{{entry.pokemon.name}}">
+                            </a>
                         </td>
                         <td>
                             <form action="{% url 'home:favorites' %}" method="post">
