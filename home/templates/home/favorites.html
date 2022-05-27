@@ -8,6 +8,10 @@
     {% endcompress %}
 {% endblock scsslink %}
 
+{% block jslink %}
+    <script src="{% static 'home/favorites/index.js' %}"></script>
+{% endblock jslink %}
+
 {% block content %}
     <div id="container">
         {% for entry in data %}
@@ -24,7 +28,21 @@
                             <img class="container__favorite-image" src="{{entry.pokemon.url_image}}" alt="{{entry.pokemon.name}}">
                         </td>
                         <td>
-                            {{entry.pokemon.stars}}
+                            <form action="{% url 'home:favorites' %}" method="post">
+                                {% csrf_token %}
+
+                                <input type="hidden" name="user" value="{{ user.username }}">
+                                <input type="hidden" name="pokemon" value="{{ entry.pokemon.name }}">  
+                                <input
+                                    class="container__rating"
+                                    max="5"
+                                    oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+                                    step="0.2"
+                                    style="--value:{{ entry.stars }};"
+                                    type="range"
+                                    name="stars">
+                                <input type="submit" value="Save" id="container__save">
+                            </form>
                         </td>
                     </tr>
                 </tbody>

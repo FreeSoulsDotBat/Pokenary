@@ -18,7 +18,7 @@ class Pokemon(models.Model):
 class Favorites(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
-    stars = models.IntegerField(default=0, validators=[MaxValueValidator(5), MinValueValidator(0)])
+    stars = models.DecimalField(default=0, max_digits=2, decimal_places=1, validators=[MaxValueValidator(5.0), MinValueValidator(0.0)])
 
     def __str__(self):
         return f"The user {self.user} scored with {self.stars} the Pokémon {self.pokemon}"

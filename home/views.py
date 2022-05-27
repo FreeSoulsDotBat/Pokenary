@@ -66,12 +66,16 @@ class FavoritesView(LoginRequiredMixin, View):
         data = request.POST
         data_dict = {
             'user': data['user'],
-            'pokemon': data['pokemon']
+            'pokemon': data['pokemon'],
+            'stars': data['stars']
         }
         user_model = User.objects.get(username=data_dict['user'])
         pokemon_model = Pokemon.objects.get(name=data_dict['pokemon'])
-        
-        Favorites.objects.get_or_create(pokemon=pokemon_model, user=user_model)
+
+        if not Favorites.objects.filter(pokemon=pokemon_model, user=user_model):
+            Favorites.objects.create(pokemon=pokemon_model, user=user_model, stars=data_dict['stars'])
+        else:
+            Favorites.objects.filter(pokemon=pokemon_model, user=user_model).update(stars=data_dict['stars'])
 
         context = {
             'data': Favorites.objects.filter(user=user_model)

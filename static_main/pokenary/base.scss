@@ -127,6 +127,7 @@ body {
     width: 100vw;
     height: 100vh;
     z-index: 0;
+    overflow-x: hidden;
 }
 
 body #base {
@@ -163,8 +164,8 @@ body #base {
     left: 0;
     bottom: 0;
     right: 0;
-    width: 330;
-    height: 300;
+    width: 330px;
+    height: 300px;
     background-color: #fccf00;
     border-radius: 30%;
 }

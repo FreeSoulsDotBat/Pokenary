@@ -8,6 +8,10 @@
     {% endcompress %}
 {% endblock scsslink %}
 
+{% block jslink %}
+    <script src="{% static 'home/pokemon/index.js' %}"></script>
+{% endblock jslink %}
+
 {% block content %}
     <div id="container">
         <div id="container__image-box">
@@ -114,8 +118,22 @@
                 {% csrf_token %}
 
                 <input type="hidden" name="user" value="{{ user.username }}">
-                <input type="hidden" name="pokemon" value="{{ name }}">
-                <input id="container__turn-favorite" type="submit" value="Favorite">
+                <input type="hidden" name="pokemon" value="{{ name }}">        
+
+                <button type="button" class="container__turn-favorite" id="container__show-stars" onclick="showStars()">Favorite</button>
+                <div id="container__stars-box" onclick="hideStars()">
+                    <input
+                        class="container__rating"
+                        max="5.0"
+                        oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+                        step="0.2"
+                        style="--value:0;"
+                        type="range"
+                        name="stars"
+                        value="0.0"
+                        onclick="event.stopPropagation()">
+                    <input type="submit" class="container__turn-favorite" id="container__save" value="Save">
+                </div>
             </form>
             {% endif %}
         </div>
