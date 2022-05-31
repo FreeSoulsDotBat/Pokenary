@@ -150,3 +150,6 @@ LOGIN_REDIRECT_URL = '/'
 import django_heroku
 django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
+
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
