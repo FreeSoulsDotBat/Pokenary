@@ -152,5 +152,4 @@ django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
 
 import mimetypes
-# mimetypes.add_type("text/x-scss", ".scss", True)
 mimetypes.add_type("text/css", ".css", True)
