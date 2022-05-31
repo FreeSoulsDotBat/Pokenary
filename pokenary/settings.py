@@ -148,4 +148,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 
 import django_heroku
+del DATABASES['default']['OPTIONS']['sslmode'] 
 django_heroku.settings(locals())
