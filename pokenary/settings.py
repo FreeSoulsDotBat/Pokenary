@@ -142,6 +142,8 @@ COMPRESS_PRECOMPILERS = [
 
 COMPRESS_ENABLED = True
 
+COMPRESS_OFFLINE = True
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -152,6 +154,3 @@ LOGIN_REDIRECT_URL = '/'
 import django_heroku
 django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
-
-import mimetypes
-mimetypes.add_type("text/css", ".css", True)
