@@ -142,8 +142,6 @@ COMPRESS_PRECOMPILERS = [
 
 COMPRESS_ENABLED = True
 
-COMPRESS_OFFLINE = True
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
