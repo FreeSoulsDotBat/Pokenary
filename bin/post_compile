@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd "$1" || exit 1
-echo "-----> Compiling SCSS"
-python manage.py compress --force
+echo "-----> Compressing SCSS"
+python manage.py compress
 echo "-----> Collecting static files"
 python manage.py collectstatic --noinput --traceback
