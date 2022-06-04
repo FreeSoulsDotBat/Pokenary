@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^p52-_%y9x4#91p67lt7f0ckt3r80^h=w(hx&a3rwo8(qx7kkt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ADMINS = [('jonatan.fbossan@gmail.com')]
+ADMINS = [('jonatan.fbossan@gmail.com'), ('jonatan.fbossan@gmail.com')]
 
 ALLOWED_HOSTS = ['pokenary.herokuapp.com']
 
@@ -131,8 +131,7 @@ STATIC_URL = '/static_main'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_main'), 
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static_main')
 ]
 
 STATICFILES_FINDERS = [
