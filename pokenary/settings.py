@@ -26,6 +26,8 @@ SECRET_KEY = 'django-insecure-^p52-_%y9x4#91p67lt7f0ckt3r80^h=w(hx&a3rwo8(qx7kkt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+ADMINS = [('jonatan.fbossan@gmail.com')]
+
 ALLOWED_HOSTS = ['pokenary.herokuapp.com']
 
 
