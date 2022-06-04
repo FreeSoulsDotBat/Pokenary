@@ -140,6 +140,10 @@ COMPRESS_PRECOMPILERS = [
     ('text/x-scss', 'django_libsass.SassCompiler'),
 ]
 
+COMPRESS_OFFLINE = True
+LIBSASS_OUTPUT_STYLE = 'compressed'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
