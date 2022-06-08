@@ -16,6 +16,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+WSGI_APPLICATION = 'pokenary.wsgi.application'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -26,8 +28,7 @@ SECRET_KEY = 'django-insecure-^p52-_%y9x4#91p67lt7f0ckt3r80^h=w(hx&a3rwo8(qx7kkt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['pokenary.herokuapp.com']
-
+ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -53,12 +55,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 ROOT_URLCONF = 'pokenary.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates_main')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,11 +128,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static'
+STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = 'staticfiles/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static_main')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/'),
+]
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -140,6 +146,9 @@ COMPRESS_PRECOMPILERS = [
     ('text/x-scss', 'django_libsass.SassCompiler'),
 ]
 
+# COMPRESS_OFFLINE = True
+# LIBSASS_OUTPUT_STYLE = 'compressed'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -147,10 +156,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
 
-import django_heroku
-django_heroku.settings(locals())
-del DATABASES['default']['OPTIONS']['sslmode']
+# import django_heroku
+# django_heroku.settings(locals())
+# del DATABASES['default']['OPTIONS']['sslmode']
 
 import mimetypes
 mimetypes.add_type("text/x-scss", ".scss", True)
 mimetypes.add_type("text/css", ".css", True)
+mimetypes.add_type("text/html", ".css", True)
