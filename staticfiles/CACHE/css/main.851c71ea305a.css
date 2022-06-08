@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Pokemon';
+  src: url("/static/fonts/PokemonSolid.ttf?3b54c3db12d9"); }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("/static/fonts/Roboto-Regular.ttf?3b54c3db12d9"); }
+
+/* line 13, static/scss/main.scss */
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto';
+  line-height: 0; }
+
+/* line 19, static/scss/main.scss */
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 7fr;
+  grid-template-areas: 'header' 'content'; }

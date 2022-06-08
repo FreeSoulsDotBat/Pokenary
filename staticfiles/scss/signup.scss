@@ -1,0 +1,71 @@
+@import 'scss/main.scss';
+
+#container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    color: $primary-font;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    border: .06rem solid $primary-font;
+    border-radius: .6rem;
+    padding: 2rem;
+}
+
+form li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 1rem;
+}
+
+form li label {
+    margin-top: 1rem;
+    margin-bottom: .2rem;
+    font-weight: bold;
+}
+
+form li span {
+    margin-top: 1rem;
+}
+
+form li input {
+    border: .06rem solid $primary-font;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    border-radius: .6rem;
+    padding-left: .5rem;
+    height: 1.8rem;
+    margin-top: .8rem;
+}
+
+form input[type=submit] {
+    height: 2.5rem;
+    border: .06rem solid $primary-font;
+    color: $primary-font;
+    background-color: transparent;
+    border-radius: .6rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition-duration: .3s;
+}
+
+form input[type=submit]:hover {
+    font-weight: bold;
+    color: #fccf00;
+    border: .06rem solid #2468b1;
+    transition-duration: .5s;
+    background-color: #2468b1;
+    box-shadow: 0.06rem 0.06rem .75rem -.3rem rgba(0,0,0,0.4);
+    transform: scale(1.2);
+}
+

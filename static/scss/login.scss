@@ -1,0 +1,82 @@
+@import 'main.scss';
+
+#container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-top: 15rem;
+   color: $primary-font;
+}
+
+#container p {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+#container a {
+    text-decoration: none;
+    color: #fccf00;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    transition-duration: .3s;
+}
+
+#container a:hover {
+    transform: scale(1.2);
+    transition-duration: .5s;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    border: .06rem solid $primary-font;
+    border-radius: .6rem;
+    padding: 2rem;
+}
+
+
+.container__form-row {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.container__form-row input {
+    border: .06rem solid $primary-font;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    border-radius: .6rem;
+    padding-left: .5rem;
+    height: 1.8rem;
+    margin-top: .8rem;
+}
+
+.container__form-row label {
+    font-weight: bold;
+}
+
+form input[type=submit] {
+    height: 2.5rem;
+    border: .06rem solid $primary-font;
+    color: $primary-font;
+    background-color: transparent;
+    border-radius: .6rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition-duration: .3s;
+}
+
+form input[type=submit]:hover {
+    font-weight: bold;
+    color: #fccf00;
+    border: .06rem solid #2468b1;
+    transition-duration: .5s;
+    background-color: #2468b1;
+    box-shadow: 0.06rem 0.06rem .75rem -.3rem rgba(0,0,0,0.4);
+    transform: scale(1.2);
+}

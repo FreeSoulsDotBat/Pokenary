@@ -4,12 +4,12 @@
 
 {% block scsslink %}
     {% compress css %}
-        <link type="text/x-scss" href="{% static 'home/pokemon/style.scss' %}" rel="stylesheet" media="screen" />
+        <link type="text/x-scss" href="{% static 'scss/pokemon.scss' %}" rel="stylesheet" media="screen" />
     {% endcompress %}
 {% endblock scsslink %}
 
 {% block jslink %}
-    <script src="{% static 'home/pokemon/index.js' %}"></script>
+    <script src="{% static 'js/pokemon.js' %}"></script>
 {% endblock jslink %}
 
 {% block content %}

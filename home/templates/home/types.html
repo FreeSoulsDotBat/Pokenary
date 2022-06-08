@@ -4,12 +4,12 @@
 
 {% block scsslink %}
     {% compress css %}
-        <link type="text/x-scss" href="{% static 'home/types/style.scss' %}" rel="stylesheet" media="screen" />
+        <link type="text/x-scss" href="{% static 'scss/types.scss' %}" rel="stylesheet" media="screen" />
     {% endcompress %}
 {% endblock scsslink %}
 
 {% block content %}
 <div id="container">
-    <img src="{% static 'home/types/PokemonTypes.webp' %}" alt="">
+    <img src="{% static 'assets/PokemonTypes.webp' %}" alt="">
 </div>
 {% endblock content %}

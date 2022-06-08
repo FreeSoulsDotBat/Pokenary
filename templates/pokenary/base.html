@@ -1,0 +1,116 @@
+{% load compress %}
+{% load static %}
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+    {% block scsslink %}
+    {% endblock scsslink %}
+    {% block jslink %}
+    {% endblock jslink %}
+    {% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/main.scss' %}" media="screen" />
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/base.scss' %}" media="screen" />
+    {% endcompress %}
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <title>Pokenary</title>
+</head>
+
+<body>
+    <div id="base__pikachu">
+        <div id="base__ears-left">
+            <div id="base__ear1-left"></div>
+            <div id="base__ear2-left"></div>
+        </div>
+        <div id="base__ears-right">
+            <div id="base__ear1-right"></div>
+            <div id="base__ear2-right"></div>
+        </div>
+        <div id="base__heads">
+            <div id="base__head1"></div>
+            <div id="base__head2"></div>
+            <div id="base__head3"></div>
+        </div>
+        <div id="base__cheeks">
+            <div id="base__cheek1"></div>
+            <div id="base__cheek2"></div>
+        </div>
+    </div>
+    <div id="base">
+        <header class="base__header">
+            <a class="base__logo" href="{% url 'home:home' %}">Pokenary</a>
+            <nav class="base__menu">
+                <ul>
+                    <li id="base__menu-home">
+                        <a href="{% url 'home:home' %}" id="base__home-title">Home</a>
+                        <div id="base__fire-box">
+                            <div class="base__flames" id="base__flame-1"></div>
+                            <div class="base__flames" id="base__flame-1-red"></div>
+                            <div class="base__flames" id="base__flame-2"></div>
+                            <div class="base__flames" id="base__flame-2-red"></div>
+                            <div class="base__flames" id="base__flame-3"></div>
+                            <div class="base__flames" id="base__flame-3-red"></div>
+                            <div class="base__small-element" id="base__small-element-1"></div>
+                            <div class="base__small-element" id="base__small-element-2"></div>
+                        </div>
+                    </li>
+                    <li id="base__menu-types">
+                        <a id="base__types-title" href="{% url 'home:types' %}">Types</a>
+                        <div id="base__water-box">
+                            <div class="base__drops" id="base__drop-5"></div>
+                            <div class="base__drops" id="base__drop-4"></div>
+                            <div class="base__drops" id="base__drop-3"></div>
+                            <div class="base__drops" id="base__drop-2"></div>
+                            <div class="base__drops" id="base__drop-1"></div>
+                        </div>
+                    </li>
+                    <li id="base__menu-fav">
+                        <a id="base__fav-title" href="{% url 'home:favorites' %}">Favorites</a>
+                        <div id="base__leaf-box">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="base__icons">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <p class="base__login" >Welcome: {{ user.get_username }}</p>
+                        </li>
+                        <li>
+                            <a class="base__login" href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a class="base__login" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/jonatan-bossan/">
+                            <i class="fa-brands fa-linkedin base__linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://github.com/FreeSoulsDotBat">
+                            <i class="fa-brands fa-github base__github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+
+</html>
