@@ -11,9 +11,9 @@ td {
     transition-duration: 0.3s;
 }
 
-td a {
-    text-decoration: none;
-    color: $primary-font
+td p {
+    color: $primary-font;
+    cursor: default;
 }
 
 td:hover {
@@ -53,6 +53,16 @@ td:hover {
     border-top-right-radius: .6rem;
 }
 
+.container__details {
+    margin-top: 20px;
+    display: block;
+    text-decoration: none;
+    color: #fccf00;
+    width: fit-content;
+    line-height: none;
+    font-weight: bold;
+}
+
 #container__table-body tr {
     text-align: center;
     height: 1.875rem;
@@ -60,13 +70,20 @@ td:hover {
 
 .container__images {
     position: relative;
-    display: none;
-    animation: pokemon-appears .8s ease-in-out;
+    display: block;
+    // animation: pokemon-appears .8s ease-in-out;
 }
 
 #container__image {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container__box-pokemon {
+    display: none;
+    justify-content: flex-end;
     align-items: center;
     flex-direction: column;
 }

@@ -1,15 +1,16 @@
-version: "3"
 services:
   app:
-    container_name: pokenary_container
-    build: .
+    container_name: pokenary_app
+    build:
+      context: ./
+      dockerfile: ./docker/pokenary/Dockerfile
     volumes:
       - .:/pokenary
     ports:
       - 8000:8000
-    image: app:pokenary
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     deploy:
       resources:
         limits:
@@ -18,10 +19,18 @@ services:
           memory: 2048M
     command: python manage.py runserver 0.0.0.0:8000
   db:
-    container_name: 'mysql_db'
+    container_name: pokenary_db
+    build:
+      context: ./
+      dockerfile: ./docker/db/Dockerfile
     image: mysql:latest
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     volumes:
-      - ./data/mysql/db:/var/lib/mysql
+      - mysql_pokenary_data:/var/lib/mysql
     ports:
       - 3306:3306
     environment:
@@ -33,3 +42,5 @@ services:
           memory: 4096M
         reservations:
           memory: 2048M
+volumes:
+  mysql_pokenary_data:

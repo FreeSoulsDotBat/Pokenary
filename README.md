@@ -1,7 +1,5 @@
 # Pokenary
-This is a project of a dictionary of Pokémons that consumes the API https://pokeapi.co/
-
-See at https://pokenary.herokuapp.com/
+This is a project of a Pókemons dictonary that consumes the https://pokeapi.co/ API
 
 # Setup the development environment
 
@@ -12,8 +10,9 @@ See at https://pokenary.herokuapp.com/
 
 ### If you want to see Pokenary on your localhost you need to follow this steps:
 
-* Run `docker-compose up --build` on the root of the project;
-* Make the dump with the file _pokenary_dump.sql_ in the root of the project; (Or update the database directly from the API, I will explain later)
+* Go to the root of the project with your preferred bash;
+* Run `docker volume create mysql_pokenary_data` to create the volume that will be used on the mysql container;
+* Run `docker-compose up --build` to lift the containers and build the images;
 * Have fun!
 
 ### You can update the database directly from the API by the admin of django:

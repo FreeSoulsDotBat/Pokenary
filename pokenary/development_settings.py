@@ -13,7 +13,7 @@ DATABASES = {
         'NAME': 'pokenary',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'mysql_db',
+        'HOST': 'pokenary_db',
         'PORT': '3306'
     }
 }
